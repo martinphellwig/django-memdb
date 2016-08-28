@@ -123,3 +123,4 @@ STATIC_URL = '/static/'
 # pylint:disable=wrong-import-position
 import django_integrator
 django_integrator.add_application('django_memdb')
+django_integrator.add_application('django_memdb_test')
