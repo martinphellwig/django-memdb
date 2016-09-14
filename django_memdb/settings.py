@@ -2,8 +2,6 @@
 This projects settings.
 """
 # These settings can be imported with the django_app_importer tool
-URLCONF = 'urls'
-
 INSTALLED_APPS = ['django_query_signals']
 
 MEMDB_NAME = 'django_memdb'
