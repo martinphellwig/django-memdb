@@ -30,6 +30,15 @@ def restore(query=None):
         for processor in arguments['processors']:
             processor(arguments)
 
+        if isinstance(arguments['data'], bytes):
+            arguments['data'] = arguments['data'].decode('utf-8')
+
+        if isinstance(arguments['data'], str):
+            try:
+                arguments['data'] = json.loads(arguments['data'])
+            except json.JSONDecodeError:
+                pass
+
         objects = serializers.deserialize('json', json.dumps(arguments['data']))
         for obj in objects:
             obj.save()
