@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 NAME = 'django-memdb'
 DESCRIPTION = 'Django Memory Database'
-VERSION = '0.0.4'
+VERSION = '0.0.5'
 AUTHOR = 'Martin P. Hellwig'
 AUTHOR_EMAIL = 'martin.hellwig@gmail.com'
 URL_MAIN = "https://bitbucket.org/hellwig/" + NAME + '/'
