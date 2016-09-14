@@ -12,4 +12,4 @@ class PersistentStorage(models.Model):
     modelname = models.CharField(max_length=63)
     inserted = models.DateTimeField(auto_now_add=True)
     codec = models.CharField(max_length=128)
-    data = models.TextField()
+    data = models.BinaryField()

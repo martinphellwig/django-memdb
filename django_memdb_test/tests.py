@@ -1,7 +1,6 @@
 "Test module"
 import zlib
 import json
-import base64
 
 from django.test import TestCase
 from django_memdb import settings
@@ -18,18 +17,13 @@ def extra_process(arguments):
         data = json.dumps(data)
         data = data.encode('utf-8')
         data = zlib.compress(data)
-        data = base64.b85encode(data)
-        data = data.decode('ascii')
         arguments['data'] = data
     elif arguments['process'] == settings.MEMDB_PROCESS_DECODE:
         data = arguments['data']
-        data = base64.b85decode(data)
         data = zlib.decompress(data)
         data = data.decode('utf-8')
         data = json.loads(data)
         arguments['data'] = data
-
-
 
 def hook(sender, **kwargs): # pylint: disable=unused-argument
     "Just insert a hook."
@@ -88,4 +82,3 @@ class MainTest(TestCase):
         restore.restore(query)
         self.assertTrue(PersistentStorage.objects.all().exists())
         self.assertTrue(settings.MEMDB_RESTORED)
-

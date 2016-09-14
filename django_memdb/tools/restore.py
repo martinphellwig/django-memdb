@@ -18,7 +18,7 @@ def restore(query=None):
             return
 
     for instance in query:
-        arguments = {'data':json.loads(instance.data),
+        arguments = {'data':instance.data,
                      'application':instance.application,
                      'model':instance.modelname,
                      'database':settings.MEMDB_NAME,

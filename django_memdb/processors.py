@@ -46,11 +46,15 @@ def callback(*args, **kwargs):
     for processor in arguments['processors']:
         processor(arguments)
 
+    if not isinstance(arguments['data'], bytes):
+        arguments['data'] = json.dumps(arguments['data'])
+        arguments['data'] = arguments['data'].encode('utf-8')
+
     journal = PersistentStorage()
     journal.application = arguments['application']
     journal.modelname = arguments['model']
     journal.codec = str(arguments['processors'])
-    journal.data = json.dumps(arguments['data'])
+    journal.data = arguments['data']
     journal.save()
 
     # remove previous entries.
