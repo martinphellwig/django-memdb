@@ -82,3 +82,16 @@ class MainTest(TestCase):
         restore.restore(query)
         self.assertTrue(PersistentStorage.objects.all().exists())
         self.assertTrue(settings.MEMDB_RESTORED)
+
+class IssueTest(TestCase):
+    "These are tests that tie in with issues."
+    def test_1(self):
+        "https://bitbucket.org/hellwig/django-memdb/issues/1/"
+        TestModelPersistent.objects.create(text='yeah')
+        query = [PersistentStorage.objects.get()]
+        PersistentStorage.objects.get().delete()
+        settings.MEMDB_RESTORED = False
+        restore.restore(query)
+        self.assertTrue(PersistentStorage.objects.all().exists())
+        self.assertTrue(settings.MEMDB_RESTORED)
+        
