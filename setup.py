@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 NAME = 'django-memdb'
 DESCRIPTION = 'Django Memory Database'
-VERSION = '0.0.0'
+VERSION = '0.0.1'
 AUTHOR = 'Martin P. Hellwig'
 AUTHOR_EMAIL = 'martin.hellwig@gmail.com'
 URL_MAIN = "https://repository.example.com/" + NAME + '/'
@@ -24,6 +24,7 @@ CLASSIFIERS = [
 REQUIREMENTS = [
     'Django',
     'django-integrator',
+    'django-query-signals',
     ]
 
 LICENSE = 'BSD'
