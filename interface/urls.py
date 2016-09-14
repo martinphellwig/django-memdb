@@ -22,5 +22,3 @@ urlpatterns = [
 
 # Add application urls
 # pylint:disable=wrong-import-position
-import django_integrator
-django_integrator.add_urlpatterns(urlpatterns)

@@ -11,9 +11,10 @@ _ = os.path.split(_)[1]
 __info__.LABELS['path'] = _
 
 def _ready(self):
-    from . import signals
-    from .tools import sanitize
+    from . import signals_connect # pylint: disable=unused-variable
+    from .tools import sanitize, restore
     sanitize.main()
+    restore.restore()
     return _APPCFG.ready(self)
 
 _ = globals()

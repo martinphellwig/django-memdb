@@ -5,9 +5,8 @@ Created on 11 Aug 2016
 '''
 from django.conf import settings
 from . import mixins
-INMEMDB = settings.MEMDB_NAME
-DEFAULT = 'default'
 
+INMEMDB = settings.MEMDB_NAME
 
 # pylint: disable=no-self-use, unused-argument, invalid-name
 class MemDB(object):
@@ -32,10 +31,15 @@ class MemDB(object):
             if issubclass(hints['model'], mixins.InMemoryDB):
                 in_mem = True
 
-        return db == INMEMDB and in_mem
+        if db == INMEMDB:
+            returns = in_mem
+        else:
+            returns = not in_mem
+
+        return returns
 
     def allow_relation(self, obj1, obj2, **hints):
         """
         Allow relations
         """
-        return None
+        return None # pragma: no cover

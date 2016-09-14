@@ -4,6 +4,8 @@ This projects settings.
 # These settings can be imported with the django_app_importer tool
 URLCONF = 'urls'
 
+INSTALLED_APPS = ['django_query_signals']
+
 MEMDB_NAME = 'django_memdb'
 
 DATABASES = {
@@ -13,3 +15,7 @@ DATABASES = {
 }
 
 DATABASE_ROUTERS = ['django_memdb.dbrouter.MemDB']
+
+MEMDB_RESTORED = False
+MEMDB_PROCESS_ENCODE = 'encode'
+MEMDB_PROCESS_DECODE = 'decode'
