@@ -36,7 +36,7 @@ def restore(query=None):
         if isinstance(arguments['data'], str):
             try:
                 arguments['data'] = json.loads(arguments['data'])
-            except json.JSONDecodeError:
+            except json.JSONDecodeError: # pragma: no cover
                 pass
 
         objects = serializers.deserialize('json', json.dumps(arguments['data']))
