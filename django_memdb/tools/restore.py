@@ -1,6 +1,6 @@
 "Restore the in memory data."
 import json
-from django.db.utils import OperationalError
+from django.db.utils import OperationalError, ProgrammingError
 from django.core import serializers
 from ..models import PersistentStorage
 from .. import settings
@@ -14,7 +14,7 @@ def restore(query=None):
         try:
             query = PersistentStorage.objects.all()
             query.count()
-        except OperationalError: # pragma: no cover
+        except (OperationalError, ProgrammingError): # pragma: no cover
             return
 
     for instance in query:
